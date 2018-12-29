@@ -11,10 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$custom-app-primary: mat-palette($mat-grey, 700, 300, 900);
-$custom-app-accent: mat-palette($mat-blue-grey, 400);
-
-// The warn palette is optional (defaults to red).
+$custom-app-primary: mat-palette($mat-grey, 900);
+$custom-app-accent: mat-palette($mat-grey, 700);
 $custom-app-warn: mat-palette($mat-red, 500);
 
 // Create the theme object (a Sass map containing all of the palettes).
@@ -27,3 +25,7 @@ $custom-app-theme: mat-dark-theme($custom-app-primary, $custom-app-accent, $cust
 
 // fonte: https://tomastrajan.github.io/angular-ngrx-material-starter#/settings
 // https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/src/themes/black-theme.scss
+
+body {
+    margin: 0;
+}
