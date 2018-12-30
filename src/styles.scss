@@ -1,5 +1,6 @@
-// @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+/*
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -11,8 +12,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$custom-app-primary: mat-palette($mat-grey, 900);
-$custom-app-accent: mat-palette($mat-grey, 700);
+// $custom-app-primary: mat-palette($mat-grey, 900);
+$custom-app-primary: mat-palette($mat-blue, 900);
+$custom-app-accent: mat-palette($mat-red, 900);
 $custom-app-warn: mat-palette($mat-red, 500);
 
 // Create the theme object (a Sass map containing all of the palettes).
@@ -25,6 +27,8 @@ $custom-app-theme: mat-dark-theme($custom-app-primary, $custom-app-accent, $cust
 
 // fonte: https://tomastrajan.github.io/angular-ngrx-material-starter#/settings
 // https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/src/themes/black-theme.scss
+
+*/
 
 body {
     margin: 0;
