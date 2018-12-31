@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { WordComponent } from './word/word.component';
 import { HomeComponent } from './home/home.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

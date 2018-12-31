@@ -7,12 +7,8 @@
 <mat-list>
   <h3 mat-subheader>Palavras</h3>
   <button mat-raised-button color="accent" (click)="navegarParaCadastrarPalavra()">Nova palavra</button>
-  <mat-list-item>
-    <h4 mat-line>Cat</h4>
-    <p mat-line>Gato</p>
-  </mat-list-item>
-  <mat-list-item>
-    <h4 mat-line>Cat</h4>
-    <p mat-line>Gato</p>
+  <mat-list-item *ngFor="let item of items | async">
+    <h4 mat-line>{{ item.word }}</h4>
+    <p mat-line>{{ item.translate }}</p>
   </mat-list-item>
 </mat-list>
