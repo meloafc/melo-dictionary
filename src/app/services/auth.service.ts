@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -35,12 +35,20 @@ export class AuthService {
     )
   }
 
-  isLoggedIn() {
-    if (this.userDetails == null) {
-      return false;
-    } else {
-      return true;
-    }
+  isLoggedIn(): Observable<boolean> {
+    var subject = new Subject<boolean>();
+
+    this.user.subscribe(
+      (user) => {
+        if (user) {
+          subject.next(true);
+        } else {
+          subject.next(false);
+        }
+      }
+    );
+
+    return subject.asObservable();
   }
 
   logout() {

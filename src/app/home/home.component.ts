@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  public isLoggedIn: Observable<boolean>;
   public items: Observable<any[]>;
 
   constructor(
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.items = this.firestore.collection('/users').doc("afabiano15@gmail.com").collection("words").valueChanges();
   }
 
