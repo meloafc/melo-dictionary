@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class HomeComponent implements OnInit {
 
   navegarParaCadastrarPalavra() {
     this.router.navigate(['/word']);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
