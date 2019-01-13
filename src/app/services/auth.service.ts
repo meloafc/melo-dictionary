@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, Subject } from 'rxjs';
+import { User } from '../models/user';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +15,7 @@ export class AuthService {
 
   constructor(
     private firebaseAuth: AngularFireAuth,
+    private userService: UserService,
     private router: Router
   ) {
     this.user = firebaseAuth.authState;
@@ -21,7 +24,7 @@ export class AuthService {
       (user) => {
         if (user) {
           this.userDetails = user;
-          console.log(this.userDetails.email);
+          console.log(this.getUserEmail());
         } else {
           this.userDetails = null;
         }
@@ -29,10 +32,23 @@ export class AuthService {
     );
   }
 
+  getUserEmail() {
+    let email = 'guest';
+    if(this.userDetails) {
+      email = this.userDetails.email;
+    }
+    return email;
+  }
+
   signInWithGoogle() {
     return this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
-    )
+    ).then(
+      (data) => {
+        let user = new User(data.user);
+        this.userService.insertIfNotExist(user);
+      }
+    );
   }
 
   isLoggedIn(): Observable<boolean> {

@@ -8,12 +8,13 @@ import { MaterialModule } from './material/material.module';
 import { WordComponent } from './word/word.component';
 import { HomeComponent } from './home/home.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './views/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,12 @@ import { AuthGuardService } from './services/auth-guard.service';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
